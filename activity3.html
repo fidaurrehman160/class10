@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sum of Next 10 Integers</title>
+    </head>
+    <body>
+        <script>
+            function calculateSum() {
+                let sum = 0;
+                let numbers = [];
+
+                for (let i = 11; i <= 20; i++) {
+                    sum += i;
+                    numbers.push(i);
+                }
+                document.getElementById("sumDisplay").textContent = "The sum of the next 10 integers is: " + sum;
+
+                let output = "The next 10 integers are: [ ";
+                for (let i = 0; i < numbers.length; i++){
+                    output += numbers[i];
+                    if (i < numbers.length - 1) {
+                        output += ", ";
+                    }
+                }
+                output += "]";
+                document.getElementById("numberDisplay").textContent = output;
+
+            }
+        </script>
+
+        <button onclick="calculateSum()">Calculate Sum</button>
+        <br>
+        <p id="numberDisplay"></p>
+        <p id="sumDisplay"></p>
+
+    </body>
+</html>
