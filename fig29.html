@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Shopping List</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                padding: 10px;
+                border: 1px solid lightgray;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>My Shopping List</h1>
+        <input type="text" id="newItem" placeholder="Enter item name">
+        <button onclick="addItem()">Add Item</button>
+        <br>
+        <table id="shoppingListTable"></table>
+
+        <script>
+            let shoppingList = [];
+
+            function addItem() {
+                const newItemName = document.getElementById("newItem").value;
+
+                if (newItemName !== "") {
+                    shoppingList.push(newItemName);
+
+                    document.getElementById("newItem").value = ""; // Clear input field
+
+                    updateShoppingListTable();
+                } else {
+                    alert("Please enter an item name! ");
+                }
+            }
+
+            function updateShoppingListTable() {
+                const table = document.getElementById("shoppingListTable");
+                table.innerHTML = "";
+
+                const headerRow = document.createElement("tr");
+                const headerItem = document.createElement("th");
+                headerItem.textContent = "Shopping List Items";
+                headerRow.appendChild(headerItem);
+                table.appendChild(headerRow);
+
+                for (let i = 0; i < shoppingList.length; i++) {
+                    const itemRow = document.createElement("tr");
+                    const itemCell = document.createElement("td");
+                    itemCell.textContent = shoppingList[i];
+                    itemRow.appendChild(itemCell);
+                    table.appendChild(itemRow);
+                }
+            }
+        </script>
+
+    </body>
+</html>
