@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Text Highlight Animation</title>
+        <style>
+            #highlighted-text {
+                font-size: 100px;
+                color: black;
+                background-color: transparent;
+                animation: highlight 2s ease-in-out alternate infinite;
+            }
+            @keyframes highlight {
+                from{ background-color: transparent;}
+                to{ background-color: yellow;}
+            }
+        </style>
+    </head>
+    <body>
+        <p id="highlighted-text">This text will be highlighted!</p>
+    </body>
+</html>
