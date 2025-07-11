@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Shopping List</title>
+    </head>
+    <body>
+        <h1>My Shopping List</h1>
+        <ul id="shoppingList"></ul>
+        <script>
+            const shoppingitems = ["Milk", "Bread", "Eggs", "Butter"];
+
+            function addItem() {
+                const newItem = document.getElementById("newItemInput").value;
+                shoppingitems.push(newItem);
+                updateList();
+            }
+
+            function updateList() {
+                const listElement = document.getElementById("shoppingList");
+                listElement.innerHTML = ""; // Clear existing items
+
+                for (let i = 0; i < shoppingitems.length; i++ ) {
+                    const item = shoppingitems[i];
+                    const listItem = document.createElement("li");
+                    listItem.textContent = item;
+                    listElement.appendChild(listItem);
+                }
+            }
+            updateList(); // Initial call to populate the list
+        </script>
+        <br>
+        <input type="text" id="newItemInput" placeholder="Enter new item">
+        <button onclick="addItem()">Add Item</button>
+    </body>
+</html>    
