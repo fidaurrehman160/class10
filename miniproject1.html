@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Array Match Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .test {
+            color: green;
+            font-weight: bold;
+        }
+
+        .fail {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Array Match Checker</h2>
+
+    <script>
+    // Initial arrays
+    const Arr1 = [1, 3, 5, 7, 9];
+    const Arr2 = [2, 4, 5, 6, 8];
+
+    const results = [];
+
+    // Check each element in Arr1 against Arr2
+    Arr1.forEach(num => {
+      if (Arr2.includes(num)) {
+        results.push(`${num} is in Arr2`);
+      } else {
+        results.push(`${num} is NOT in Arr2`);
+      }
+    });
+
+    // Display results
+    document.write("<div class='result'><strong>Check Results:</strong><br>");
+    results.forEach(r => document.write(r + "<br>"));
+    document.write("</div>");
+
+    // Helper functions for testing
+    function getCommonElements(a1, a2) {
+      return a1.filter(val => a2.includes(val));
+    }
+
+    function getUncommonFromArr1(a1, a2) {
+      return a1.filter(val => !a2.includes(val));
+    }
+
+    // Unit Test 1: Common elements
+    function testCommon() {
+      const expected = [5];
+      const result = getCommonElements(Arr1, Arr2);
+      const passed = JSON.stringify(result) === JSON.stringify(expected);
+      return passed ? "<div class='test'>✅ Test Passed: Common Elements</div>"
+                    : `<div class='fail'>❌ Test Failed: Expected ${expected} but got ${result}</div>`;
+    }
+
+    // Unit Test 2: Uncommon elements from Arr1
+    function testUncommon() {
+      const expected = [1, 3, 7, 9];
+      const result = getUncommonFromArr1(Arr1, Arr2);
+      const passed = JSON.stringify(result) === JSON.stringify(expected);
+      return passed ? "<div class='test'>✅ Test Passed: Uncommon Elements from Arr1</div>"
+                    : `<div class='fail'>❌ Test Failed: Expected ${expected} but got ${result}</div>`;
+    }
+
+    // Run Tests
+    document.write("<div class='result'><strong>Unit Tests:</strong><br>");
+    document.write(testCommon());
+    document.write(testUncommon());
+    document.write("</div>");
+    </script>
+</body>
+
+</html>
