@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Finding Element in Array</title>
+    </head>
+    <body>
+        <h1>Shopping Cart</h1>
+        <p id="list"></p>
+        <p id="result"></p>
+
+        <script>
+            const shoppingList = ["apples", "bread", "milk", "cheese"];
+            function findItem (itemName) {
+                let listContent = "Shopping List: ";
+
+                for (let i = 0; i < shoppingList.length; i++) {
+                    listContent += shoppingList[i];
+                    if (i< shoppingList.length - 1) {
+                        listContent += ", ";
+                    }
+                }
+                document.getElementById("list").textContent = listContent;
+                for (let i = 0;i < shoppingList.length; i++) {
+                    if (shoppingList[i] === itemName){
+                    document.getElementById("result").textContent = `"${itemName}" is in your shoping list!`;
+                    return;
+                    }
+                }
+                document.getElementById("result").textContent = ` "${itemName} is not in your shopping list.`;
+                
+            }
+            findItem("milk");
+        </script>
+    </body>
+</html>
