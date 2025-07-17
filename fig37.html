@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Unit Tests for Array Search</title>
+    </head>
+    <body>
+        <h1>Unit Tests for `findItem` Function</h1>
+        <p id="testResults"></p>
+
+        <script>
+            const shoppingList = ["apples", "bread", "milk", "cheese"];
+
+            function findItem(itemName) {
+                for (let i = 0; i < shoppingList.length; i++) {
+                    if (shoppingList[i] == itemName) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            let testResults = "";
+            testResults += "Test 1 (Existing Item): ";
+            if (findItem("milk") == true) {
+                testResults += "Passed \n";
+            }
+            else {
+                testResults += "Failed \n";
+            }
+            testResults += "\n Test 2 (Non-Existing Item): ";
+            if (findItem("eggs") == false) {
+                testResults += "Passed \n";
+            }
+            else {
+                testResults += "Failed \n";
+            }
+            document.getElementById("testResults").textContent = testResults;
+        </script>
+    </body>
+</html>
