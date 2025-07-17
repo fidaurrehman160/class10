@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>List Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Dynamic List with Button Controls</h2>
+
+    <button onclick="createList()">Create List</button>
+    <button onclick="insertNumber()">Insert Number</button>
+    <button onclick="findNumber()">Find Number</button>
+    <button onclick="removeNumber()">Remove Number</button>
+    <button onclick="totalNumbers()">Total Numbers</button>
+    <button onclick="printList()">Print List</button>
+
+    <div id="output">List not initialized.</div>
+
+    <script>
+    let list = null;
+
+    function createList() {
+      list = [];
+      document.getElementById("output").innerText = "✅ List created!";
+    }
+
+    function insertNumber() {
+      if (!checkList()) return;
+      const input = prompt("Enter number to insert:");
+      const num = parseInt(input);
+      if (!isNaN(num)) {
+        list.push(num);
+        alert(`✅ Number ${num} inserted.`);
+      } else {
+        alert("❌ Invalid number.");
+      }
+    }
+
+    function findNumber() {
+      if (!checkList()) return;
+      const input = prompt("Enter number to find:");
+      const num = parseInt(input);
+      if (list.includes(num)) {
+        alert(`✅ Number ${num} FOUND in the list.`);
+      } else {
+        alert(`❌ Number ${num} NOT found.`);
+      }
+    }
+
+    function removeNumber() {
+      if (!checkList()) return;
+      const input = prompt("Enter number to remove:");
+      const num = parseInt(input);
+      const index = list.indexOf(num);
+      if (index !== -1) {
+        list.splice(index, 1);
+        alert(`✅ Number ${num} removed.`);
+      } else {
+        alert(`❌ Number ${num} not found.`);
+      }
+    }
+
+    function totalNumbers() {
+      if (!checkList()) return;
+      alert(`📊 Total numbers in list: ${list.length}`);
+    }
+
+    function printList() {
+      if (!checkList()) return;
+      document.getElementById("output").innerText = `📋 Current List: [ ${list.join(", ")} ]`;
+    }
+
+    function checkList() {
+      if (list === null) {
+        alert("⚠️ Please create the list first.");
+        return false;
+      }
+      return true;
+    }
+    </script>
+</body>
+
+</html>
